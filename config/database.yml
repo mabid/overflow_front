@@ -1,0 +1,8 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: overflowstats_dev
+  pool: 5
+  username: root
+  password: root
+  host: localhost

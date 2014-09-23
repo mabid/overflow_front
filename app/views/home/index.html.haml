@@ -1,0 +1,66 @@
+:javascript
+  var drawChart = function(tag, data){
+  AmCharts.makeChart("chartdiv",
+    {
+      "type": "serial",
+      "pathToImages": "http://cdn.amcharts.com/lib/3/images/",
+      "categoryField": "date",
+      "dataDateFormat": "YYYY-M",
+      "theme": "default",
+      "categoryAxis": {
+        "minPeriod": "MM",
+        "parseDates": true
+      },
+      "chartCursor": {
+        "categoryBalloonDateFormat": "MMM YYYY"
+      },
+      "chartScrollbar": {},
+      "trendLines": [],
+      "graphs": [
+        {
+          "bullet": "round",
+          "id": "AmGraph-1",
+          "title": "graph 1",
+          "valueField": "posts"
+        },
+      ],
+      "guides": [],
+      "valueAxes": [
+        {
+          "id": "ValueAxis-1",
+          "title": "Number of Questions"
+        }
+      ],
+      "allLabels": [],
+      "balloon": {},
+      "legend": {
+        "useGraphSettings": true
+      },
+      "titles": [
+        {
+          "id": "Title-1",
+          "size": 15,
+          "text": "StackOverflow Questions tagged "+tag
+        }
+      ],
+      "dataProvider": data
+    }
+  );
+  }
+  $(document).ready(function(){
+    $('#tags').change(function(){
+      $.ajax({
+        url: "/tag",
+        method: "get",
+        data:{id: $(this).val()},
+        context: document.body
+      }).done(function(resp) {
+        drawChart(resp.name, resp.data);
+      });
+    })
+  })
+%h1
+  Welcome OverFlow Stats Fun
+=select_tag "tags", options_from_collection_for_select(@tags, "id", "name")
+%div{id:"chartdiv", style:"width: 100%; height: 400px; background-color: #FFFFFF;"}
+  

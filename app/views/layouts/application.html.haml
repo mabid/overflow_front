@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title>OverflowStats
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    %script{type:"text/javascript", src:"http://cdn.amcharts.com/lib/3/amcharts.js"}
+    %script{type:"text/javascript", src:"http://cdn.amcharts.com/lib/3/serial.js"}
+    = csrf_meta_tags
+
+  %body
+    =yield
