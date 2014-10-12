@@ -5,7 +5,7 @@
       "type": "serial",
       "pathToImages": "http://cdn.amcharts.com/lib/3/images/",
       "categoryField": "date",
-      "dataDateFormat": "YYYY-M",
+      "dataDateFormat": "YYYY-MM-DD",
       "theme": "default",
       "categoryAxis": {
         "minPeriod": "MM",
@@ -47,6 +47,14 @@
     }
   );
   }
+  function compare(a,b) {
+    if (a.date < b.date)
+      return -1;
+    if (a.date > b.date)
+       return 1;
+    return 0;
+  }
+
   $(document).ready(function(){
     $('#tags').change(function(){
       $.ajax({
@@ -55,6 +63,7 @@
         data:{id: $(this).val()},
         context: document.body
       }).done(function(resp) {
+        resp.data.sort(compare);
         drawChart(resp.name, resp.data);
       });
     })
