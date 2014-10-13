@@ -1,13 +1,13 @@
 class HomeController < ApplicationController
   def index
-    @tag = TagEmr.first
-    @tags = TagEmr.all  
+    @tag = TagAns.first
+    @tags = TagAns.all  
   end
 
   def tag
     id = params[:id]
     id ||= 1
-    tag = TagEmr.find(id)
-    render json: {name: tag.name, data: JSON.parse(tag.stats)}
+    tag = TagAns.find(id)
+    render json: {name: tag.name, data: JSON.parse(tag.data)}
   end
 end

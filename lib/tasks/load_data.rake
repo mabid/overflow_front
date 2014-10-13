@@ -32,4 +32,21 @@ namespace :data do
       TagEmr.create(name:tag, stats: data.to_json)
     end
   end
+
+  task :load_ans=> :environment do
+      hash = Hash.new
+      file = File.readlines('ans.json').each do |line|
+        begin
+            line = JSON.parse(line)
+            hash[line[0]] ||= []
+            hash[line[0]] << {date: line[1], posts: line[2]}
+        rescue JSON::ParserError
+          puts "failure is here:"
+          puts line
+        end
+    end
+    hash.each do |tag, data|
+      TagAns.create(name:tag, data: data.to_json)
+    end
+  end
 end
