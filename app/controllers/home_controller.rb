@@ -7,13 +7,14 @@ class HomeController < ApplicationController
   def tags
     id = params[:id]
     id ||= 1
-    tags = TagAns.where(["name LIKE ?", "#{params[:name]}%"]).select("id, name")
+    tags = TagAns.where(["name LIKE ?", "#{params[:name].downcase}%"]).select("id, name")
     render json: tags
   end
   def tag
     id = params[:id]
     id ||= 1
     tag = TagAns.find(id)
-    render json: {name: tag.name, data: JSON.parse(tag.data)}
+    emr = TagEmr.find_by_name(tag.name)
+    render json: {name: tag.name, ans_data: JSON.parse(tag.data), trend_data: JSON.parse(emr.stats) }
   end
 end

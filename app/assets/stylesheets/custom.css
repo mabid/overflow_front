@@ -1,10 +1,12 @@
+.chosen-select{
+  margin-top:20px;
+}
 .tt-dropdown-menu{
   max-height: 150px;
   overflow-y: auto;
 }
 .dropdown-menu { max-height: 200px; overflow-y: auto; }
 body {
-  padding-top: 100px;
   background: url("/assets/bg.png") #f4f4f5;
   font-family: "Open Sans",Calibri,Candara,Arial,sans-serif;
 } 
@@ -48,9 +50,7 @@ and (min-device-width : 1224px)
 {
 /* styles */
   .container {
-    max-width: 1024px;
-    min-width: 1024px;
-    width: 1024px;
+    width: 100%;
   }
 }
 
@@ -60,9 +60,7 @@ and (max-device-width : 1024px)
 and (orientation : portrait) {
 /* styles */
   .container {
-    max-width: 768x;
-    min-width: 768px;
-    width: 768px;
+    width: 100%;
   }
   .nav-tabs li{
     font-size: 12px;
@@ -76,9 +74,7 @@ and (min-device-width : 768px)
 and (max-device-width : 1024px) 
 and (orientation : landscape) {
   .container {
-    max-width: 1024px;
-    min-width: 1024px;
-    width: 1024px;
+    width: 100%;
   }
   .nav-tabs li{
     font-size: 12px;

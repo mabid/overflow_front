@@ -1,5 +1,5 @@
 :javascript
-  var drawChart = function(tag, data, div){
+  var drawChart = function(tag, data, div, text){
   AmCharts.makeChart(div,
     {
       "type": "serial",
@@ -20,7 +20,7 @@
         {
           "bullet": "round",
           "id": "AmGraph-1",
-          "title": "graph 1",
+          "title": tag,
           "valueField": "posts"
         },
       ],
@@ -40,7 +40,7 @@
         {
           "id": "Title-1",
           "size": 15,
-          "text": "StackOverflow Questions tagged "+tag
+          "text": text+" "+tag
         }
       ],
       "dataProvider": data
@@ -64,21 +64,15 @@
         data:{id: datNum.id},
         context: document.body
       }).done(function(resp) {
-        resp.data.sort(compare);
-        drawChart(resp.name, resp.data);
+        resp.trend_data.sort(compare);
+        resp.ans_data.sort(compare);
+        drawChart(resp.name, resp.trend_data, "trend", "StackOverFlow Questions Tagged: ");
+        drawChart(resp.name, resp.ans_data, "ans", "Average number of days to get an accepted Answer for: ");
       });
     }
 
-    var bestPictures = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      remote: '/tags?name=%QUERY'
-    });
- 
-    bestPictures.initialize();
-
     type = $('.chosen-select').typeahead({
-        minLength: 3,
+        minLength: 1,
         highlight: true,
         hint: false
       },
@@ -99,15 +93,15 @@
     type.on('typeahead:selected', tagSelected);
 
   })
-%h1
-  Welcome OverFlow Stats Fun
-%h2
+.row
+.span3
+.span6
+  %input{type:"text", class: "span12 chosen-select", placeholder: "Type a Tag"}
+.span3
+.row
+  .span12#trend{style: "height:400px"}
+  .span12#ans{style: "height:400px"}
+  
+%h4
   data dump has been taken from Stack Exchange Network. All those great Stack Overflow questions, answers, and comments, so generously contributed by all of you, are licensed under cc-wiki (also known as cc-by-sa):
 =link_to "Link to License", "http://creativecommons.org/licenses/by-sa/3.0/"
-%br
-%br
-%br
-%br
-%input{type:"text", class: "chosen-select", placeholder: "Type a Tag"}
-%div{id:"chartdiv", style:"width: 100%; height: 400px; background-color: #FFFFFF;"}
-  
