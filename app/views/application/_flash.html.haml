@@ -1,0 +1,10 @@
+- if flash.present?
+  .container.flash
+    - if flash[:alert]
+      .alert.alert-error
+        = flash[:alert]
+        = link_to "×", "#", class: 'close', 'data-dismiss'=> "alert"
+    - if flash[:notice]
+      .alert.alert-success
+        = flash[:notice]
+        = link_to "×", "#", class: 'close', 'data-dismiss'=> "alert"

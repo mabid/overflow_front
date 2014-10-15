@@ -50,6 +50,7 @@ OverflowStats::Application.routes.draw do
   # just remember to delete public/index.html.
   root :to => 'home#index'
   get :tag, to:'home#tag'
+  get :tags, to:'home#tags'
 
   # See how all your routes lay out with "rake routes"
 

@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require chosen-jquery
+//= require bootstrap.min
+//= require select2.min
+//= require typeahead.bundle.js
 //= require_tree .

@@ -9,6 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require chosen
+ *= bootstrap.min
+ *= bootstrap-responsive.min
+ *= custom
+ *= select2-bootstrap.css
+ *= typeaheadjs
  *= require_tree .
  */

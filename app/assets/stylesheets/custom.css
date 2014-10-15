@@ -1,0 +1,292 @@
+.tt-dropdown-menu{
+  max-height: 150px;
+  overflow-y: auto;
+}
+.dropdown-menu { max-height: 200px; overflow-y: auto; }
+body {
+  padding-top: 100px;
+  background: url("/assets/bg.png") #f4f4f5;
+  font-family: "Open Sans",Calibri,Candara,Arial,sans-serif;
+} 
+
+#root_footer {
+  height: 20px;
+}
+
+#root{
+  clear: both;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin-bottom: -20px;
+}
+
+#footer {
+  clear: both;
+  position: relative;
+  height: 20px;
+  font-size: 12px;
+  text-align: center;
+  margin: 0 auto;
+  float: none;
+  width: 50%;
+}
+
+#main{
+  border: 1px solid #ededed;
+  background-color: white;
+  margin: 20px;
+  padding:20px;
+}
+
+.nav-tabs li{
+  font-size: 22px;
+}
+
+@media only screen 
+and (min-device-width : 1224px) 
+{
+/* styles */
+  .container {
+    max-width: 1024px;
+    min-width: 1024px;
+    width: 1024px;
+  }
+}
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+/* styles */
+  .container {
+    max-width: 768x;
+    min-width: 768px;
+    width: 768px;
+  }
+  .nav-tabs li{
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+  .container {
+    max-width: 1024px;
+    min-width: 1024px;
+    width: 1024px;
+  }
+  .nav-tabs li{
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
+
+
+h4 {
+  margin-top: 25px;
+}
+.row {
+  margin-bottom: 20px;
+}
+.row .row {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.nav-tabs li a{
+  cursor: pointer;
+}
+
+a.settings img{
+  width: 30px;
+}
+
+.loginbox {
+  background-color: white;
+  border: 1px solid #ededed;
+  padding: 0px;
+  margin: 0 auto !important;
+  float: none !important;
+  width: 100%;
+}
+
+.loginbox .boxbody .span10{
+  float: none;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+.loginbox .boxhead{
+  background-color: #ccc;
+}
+
+.loginbox .boxhead .span10{
+  padding: 10px;
+  margin: 0 auto;
+  float: none;
+}
+
+.loginbox .boxhead h3{
+  margin: 0px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.loginbox input[type="text"], .loginbox input[type="email"], .loginbox input[type="password"]{
+  width: 90% !important;
+}
+
+.modal form {
+  margin-bottom: 0;
+}
+.modal-header{
+  background: #f5f5f5;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 10px;
+  line-height: 1.2;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: "News Cycle","Arial Narrow Bold",sans-serif;
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 36px;
+  margin-bottom: 18px;
+  font-weight: normal;
+}
+.actions-area{
+  margin-bottom:20px;
+}
+td.actions a{
+  margin: 0 10px;
+}
+
+table.stages tbody tr td{
+  width: 16%;
+}
+table.stages tr.ui-sortable-helper{
+  border-bottom: 1px solid #ddd;
+}
+
+span.popup_error{
+  color: red;
+  margin-left: 10px;
+  position: absolute;
+  line-height: 13px;
+  right: 20px;
+  width: 100px;
+}
+
+#current-modal .controls{
+  position: relative;
+}
+
+table .note{
+  height: 100px;
+  text-align:center;
+  padding:20px;
+}
+textarea{
+  height: 30px;
+}
+ul.punchlistitems{
+  list-style: none;
+  margin:0;
+}
+.tab-pane#punchlists h4{
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.brief{
+  width: 500px;
+  border: 3px solid black;
+}
+.brief .row-fluid{
+  border-bottom: 1px solid #ccc;
+ }
+.brief .span12{
+  padding: 0px !important;
+}
+.brief [class*=span]{
+  margin: 0px;
+  padding: 5px;
+ }
+
+.brief .left{
+  border-right: 1px solid #ccc;
+ }
+
+.results{
+  background-color: #ffffff;
+  padding: 8px;
+  position: absolute;
+  z-index: 999;
+  width: 260px;
+  border-radius: 14px;
+  border: 1px solid;
+}
+
+.results > ul{
+  list-style-type: none;
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+.results ul li {
+  font: 200 20px/1.5;
+  border-bottom: 1px solid #ccc;
+}
+ 
+.results ul li:last-child {
+  border: none;
+}
+.results ul li a {
+  text-decoration: none;
+  color: #000;
+  display: block;
+}
+ 
+.results ul li a:hover {
+  background: #C3D9F5;
+}
+.add_photo{
+  background-color: #EBEBEB;
+  padding: 9px 60px 9px 60px;
+  text-decoration: none;
+  border: 1px solid;
+  border-color: black;
+  color: #7A7A7A;
+  border-radius: 14px;
+  font-weight: 10px;
+  font-size: 20px;
+  margin-left: 30px;
+  width: 150px;
+  cursor: pointer;
+}
+.photos{
+  float: left;
+  width:100%;
+}
+.photo_frame{
+  width:40%;
+  padding: 15px;
+  border: 1px solid;
+  display: inline-block;
+}
+ul.alerts{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

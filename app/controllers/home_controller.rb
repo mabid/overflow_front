@@ -4,6 +4,12 @@ class HomeController < ApplicationController
     @tags = TagAns.all  
   end
 
+  def tags
+    id = params[:id]
+    id ||= 1
+    tags = TagAns.where(["name LIKE ?", "#{params[:name]}%"]).select("id, name")
+    render json: tags
+  end
   def tag
     id = params[:id]
     id ||= 1

@@ -1,12 +1,31 @@
-<!DOCTYPE html>
+!!! 5
 %html
-  %head
-    %title>OverflowStats
-    = stylesheet_link_tag "application"
+  %head{:lang => "en"}
+    = render "ios_meta"
+    = render 'html5shim'
+    = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
+
+    = csrf_meta_tags
+    = favicon_link_tag "favicon.ico"
+
+    %title
+      Where Am I In Trouble
     %script{type:"text/javascript", src:"http://cdn.amcharts.com/lib/3/amcharts.js"}
     %script{type:"text/javascript", src:"http://cdn.amcharts.com/lib/3/serial.js"}
-    = csrf_meta_tags
 
-  %body
-    =yield
+    = yield :head
+
+  %body{class: "#{controller.controller_name} #{controller.action_name}"}
+    #root
+      #header
+        = render "header"
+        = render "flash", flash: flash
+      .container
+        #main
+          .row-fluid
+            = yield
+      #root_footer
+    #footer
+      = render "footer"
+    #current-modal.modal.hide

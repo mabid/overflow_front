@@ -1,6 +1,6 @@
 :javascript
-  var drawChart = function(tag, data){
-  AmCharts.makeChart("chartdiv",
+  var drawChart = function(tag, data, div){
+  AmCharts.makeChart(div,
     {
       "type": "serial",
       "pathToImages": "http://cdn.amcharts.com/lib/3/images/",
@@ -56,22 +56,48 @@
   }
 
   $(document).ready(function(){
-    $('#tags').change(function(){
+    tagSelected = function(e, datNum){
+      console.log(datNum)
       $.ajax({
         url: "/tag",
         method: "get",
-        data:{id: $(this).val()},
+        data:{id: datNum.id},
         context: document.body
       }).done(function(resp) {
         resp.data.sort(compare);
         drawChart(resp.name, resp.data);
       });
-    })
-    $('.chosen-select').chosen({
-       allow_single_deselect:  true,
-       no_results_text: "No Tags Match",
-       width: '200px'
+    }
+
+    var bestPictures = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      remote: '/tags?name=%QUERY'
     });
+ 
+    bestPictures.initialize();
+
+    type = $('.chosen-select').typeahead({
+        minLength: 3,
+        highlight: true,
+        hint: false
+      },
+      {
+      name: 'tags',
+      displayKey: 'name',
+      source: function(query, cb){
+       $.ajax({
+        url: "/tags",
+        data: {name: query},
+        method: "get",
+        context: document.body
+       }).done(function(resp) {
+          cb(resp)
+      });
+      }
+    });
+    type.on('typeahead:selected', tagSelected);
+
   })
 %h1
   Welcome OverFlow Stats Fun
@@ -82,6 +108,6 @@
 %br
 %br
 %br
-=select_tag "tags", options_from_collection_for_select(@tags, "id", "name"), include_blank: true, prompt: "Select A Tag To view Graph", class: "chosen-select"
+%input{type:"text", class: "chosen-select", placeholder: "Type a Tag"}
 %div{id:"chartdiv", style:"width: 100%; height: 400px; background-color: #FFFFFF;"}
   
